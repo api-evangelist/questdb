@@ -5,7 +5,7 @@ provider: QuestDB
 providerId: questdb
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - Database
 - Time-Series
@@ -15,10 +15,19 @@ tags:
 - FinOps
 - Cost Management
 - FOCUS
-description: FOCUS-aligned FinOps placeholder for QuestDB. Pipeline will replace with real billing details.
-notes: Initial scaffold — billing model has not yet been reconciled.
+description: >-
+  FOCUS-aligned FinOps profile for QuestDB. The dominant cost surfaces are
+  (a) the underlying infrastructure (your AWS/Azure/GCP compute, EBS/SSD,
+  network egress) for OSS and BYOC deployments and (b) the QuestDB Enterprise
+  / BYOC commercial license. There is no managed-service per-row, per-query or
+  per-MAU charge.
+notes: >-
+  In BYOC, the cloud invoice (AWS/Azure) carries the infra costs; QuestDB
+  Enterprise license/management is invoiced separately. Costs allocate
+  cleanly via cloud-account tags on the QuestDB instance(s).
 sources:
-- https://questdb.io/
+- https://questdb.com/enterprise/
+- https://questdb.com/byoc/
 - https://focus.finops.org/focus-specification/v1-3/
 alignedWith:
   framework: FinOps Foundation Framework
@@ -27,40 +36,62 @@ alignedWith:
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 publisherName: QuestDB
-serviceCategory: Database
+serviceCategory: Database (Time-Series)
 billingModel:
-  pricingCategory: To Be Reconciled
-  billingFrequency: Monthly
+  pricingCategory: License + Underlying Infra
+  billingFrequency: Annual (license) + Monthly (cloud infra)
   billingCurrency: USD
   chargeCategories:
   - Usage
   - Purchase
   - Adjustment
 focusColumns:
-  ServiceName: QuestDB
+  ServiceName: QuestDB Enterprise
   ServiceCategory: Database
   ProviderName: QuestDB
   PublisherName: QuestDB
-  InvoiceIssuerName: QuestDB
+  InvoiceIssuerName: QuestDB / AWS Marketplace
   BillingCurrency: USD
-  ChargeCategory: Usage
+  ChargeCategory: Purchase
+  PricingUnit: license-year
 meters:
-- name: api_usage
-  description: Catch-all meter pending reconciliation.
-  unit: varies
+- name: enterprise_license
+  description: Annual QuestDB Enterprise / BYOC license fee (negotiated).
+  unit: license-year
   aggregation: sum
   dimensions:
   - account
-  - resource
+- name: compute_instance_hours
+  description: Underlying cloud VM hours running QuestDB.
+  unit: vm-hour
+  aggregation: sum
+  dimensions:
+  - cloud_account
+  - region
+  - instance_type
+- name: storage_gb_month
+  description: Block / object storage attached to QuestDB instances.
+  unit: GB-month
+  aggregation: avg
+  dimensions:
+  - cloud_account
+  - storage_class
+- name: network_egress
+  description: Egress bytes out of the QuestDB cluster to consumers.
+  unit: GB
+  aggregation: sum
+  dimensions:
+  - cloud_account
+  - region
 principles:
 - name: Visibility
-  description: Pull provider invoices or usage exports until a self-serve usage feed is documented.
+  description: Combine QuestDB invoice (license) with cloud cost-export (FOCUS) on the QuestDB-tagged resources.
 - name: Allocation
-  description: Tag invoice line items to consuming business units in your FinOps store.
+  description: Tag QuestDB instances and storage with project / team / environment in AWS / Azure for downstream allocation.
 - name: Optimization
-  description: Levers depend on the provider's billing model; review at renewal once reconciled.
+  description: Use Hypercore-style tiered storage in Enterprise to push cold partitions to S3-class storage; right-size instance class to ingestion throughput.
 - name: Accountability
-  description: Assign a contract owner to review billing against negotiated terms.
+  description: Assign an Enterprise contract owner; assign cloud-account owner for infra spend.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

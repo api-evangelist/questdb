@@ -3,7 +3,12 @@ url: https://raw.githubusercontent.com/api-evangelist/questdb/refs/heads/main/ap
 name: QuestDB
 x-type: company
 description: >-
-  QuestDB is a high-performance open-source time-series database with SQL, ILP, and PG wire support — used in trading, observability, and IoT workloads.
+  QuestDB is a high-performance open-source time-series database. It exposes
+  three programmatic surfaces — an HTTP REST API for SQL queries and CSV
+  import/export, the InfluxDB Line Protocol (ILP) over TCP and HTTP for
+  high-throughput ingestion, and the PostgreSQL wire protocol for compatibility
+  with existing tooling. QuestDB is offered as open-source, Enterprise
+  (self-hosted) and Bring-Your-Own-Cloud (BYOC).
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Database
@@ -11,13 +16,84 @@ tags:
   - SQL
   - Open Source
   - Performance
+  - ILP
+  - PostgreSQL
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: questdb:rest-http
+    name: QuestDB HTTP REST API
+    description: >-
+      HTTP REST endpoints for SQL execution (/exec), CSV import (/imp), CSV
+      export (/exp), health/metrics (/chk, /metrics) and runtime settings
+      (/settings). Default port 9000.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://questdb.com/docs/reference/sql/overview/
+    baseURL: http://<host>:9000
+    tags:
+      - REST
+      - SQL
+      - CSV
+      - Health
+      - Metrics
+    properties:
+      - type: Documentation
+        url: https://questdb.com/docs/
+      - type: APIReference
+        url: https://questdb.com/docs/reference/api/rest/
+  - aid: questdb:ilp-tcp
+    name: QuestDB ILP TCP Ingestion
+    description: >-
+      InfluxDB Line Protocol over TCP for high-throughput, low-latency time-series
+      ingestion. Default port 9009. Supports authentication and TLS in Enterprise.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://questdb.com/docs/reference/api/ilp/overview/
+    baseURL: tcp://<host>:9009
+    tags:
+      - ILP
+      - TCP
+      - Ingestion
+    properties:
+      - type: Documentation
+        url: https://questdb.com/docs/reference/api/ilp/overview/
+  - aid: questdb:ilp-http
+    name: QuestDB ILP HTTP Ingestion
+    description: >-
+      Influx Line Protocol over HTTP /write endpoint for ingestion clients that
+      prefer HTTP (TLS, auth and ack semantics easier than the TCP variant).
+      Served on the same port (9000) as the REST API.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://questdb.com/docs/reference/api/ilp/overview/
+    baseURL: http://<host>:9000
+    tags:
+      - ILP
+      - HTTP
+      - Ingestion
+  - aid: questdb:postgres-wire
+    name: QuestDB PostgreSQL Wire Interface
+    description: >-
+      PostgreSQL wire-protocol compatibility for queries via psql, JDBC and any
+      Postgres-compatible client. Default port 8812. Supports a subset of
+      Postgres features sufficient for SQL analytics on QuestDB.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://questdb.com/docs/develop/connect/
+    baseURL: postgres://<host>:8812
+    tags:
+      - PostgreSQL
+      - Wire Protocol
+      - JDBC
 common:
   - type: Website
-    url: https://questdb.io/
+    url: https://questdb.com/
+  - type: Documentation
+    url: https://questdb.com/docs/
+  - type: Pricing
+    url: https://questdb.com/enterprise/
+  - type: GitHub
+    url: https://github.com/questdb/questdb
+  - type: BYOC
+    url: https://questdb.com/byoc/
   - type: Plans
     url: plans/questdb-plans-pricing.yml
   - type: RateLimits

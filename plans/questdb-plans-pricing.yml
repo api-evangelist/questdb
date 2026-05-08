@@ -13,29 +13,83 @@ tags:
 - Open Source
 - Performance
 - Plans
-description: Placeholder plans/pricing artifact for QuestDB. Replace with real published pricing once
-  the pipeline researches the provider's plans page.
-notes: Initial scaffold — plans/pricing have not yet been reconciled.
+- Pricing
+description: >-
+  QuestDB ships in three editions: open-source (Apache 2.0) self-managed,
+  Enterprise (self-hosted commercial license with HA, security, tiered storage)
+  and BYOC (Bring Your Own Cloud — QuestDB operates the database in your AWS or
+  Azure account). The previously offered fully-managed QuestDB Cloud has been
+  retired in favor of BYOC + Enterprise. Pricing is not publicly listed; quotes
+  are by sales / AWS Marketplace private offers.
+notes: >-
+  Public list pricing for Enterprise / BYOC is not published. Tiers below
+  reflect editions only; numeric prices remain unreconciled.
 sources:
-- https://questdb.io/
+- https://questdb.com/enterprise/
+- https://questdb.com/byoc/
+- https://aws.amazon.com/marketplace/pp/prodview-6zl4v3a4dq27g
+- https://github.com/questdb/questdb/blob/master/LICENSE.txt
 plans:
-- id: questdb-default
-  name: To Be Reconciled
-  type: enterprise
-  description: Initial scaffold; replace with provider plan tiers once pricing is reconciled.
+- id: questdb-oss
+  name: QuestDB Open Source
+  type: free
+  description: Apache 2.0 open-source single-node QuestDB. Free to download, self-host and modify.
   entries:
-  - label: API Access
-    name: api_access
+  - label: Open source
+    name: oss
     type: flat
-    metric: varies
+    metric: license
     limit: -1
-    timeFrame: usage
+    timeFrame: perpetual
     geo: global
     unit: 1
-    price: see https://questdb.io/
+    price: 0
     userMultiplied: false
-  elements:
-  - name: Pending Reconciliation
+- id: questdb-enterprise
+  name: QuestDB Enterprise
+  type: enterprise
+  description: Commercial self-hosted edition with HA replication, role-based access, RLS, tiered storage, audit logging, official support and SLA.
+  entries:
+  - label: Custom contract
+    name: enterprise_contract
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: annual
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+- id: questdb-byoc
+  name: QuestDB BYOC (Bring Your Own Cloud)
+  type: enterprise
+  description: QuestDB-managed deployment running inside your AWS or Azure account; you pay AWS/Azure for compute & storage and QuestDB for the management plane.
+  entries:
+  - label: BYOC management
+    name: byoc_management
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: annual
+    geo: AWS, Azure (GCP planned)
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+- id: questdb-aws-marketplace
+  name: QuestDB on AWS Marketplace (private offers)
+  type: enterprise
+  description: Private-offer-based licensing through AWS Marketplace; pricing tailored per customer (marketplace@questdb.io).
+  entries:
+  - label: Private offer
+    name: marketplace_private_offer
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: annual
+    geo: AWS regions
+    unit: 1
+    price: contact marketplace@questdb.io
+    userMultiplied: false
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

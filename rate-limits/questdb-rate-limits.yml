@@ -15,21 +15,46 @@ tags:
 - Rate Limiting
 - Quotas
 - Throttling
-description: Placeholder rate-limit artifact for QuestDB. Replace with real limits once researched.
-notes: Initial scaffold — limits have not yet been reconciled.
+description: >-
+  QuestDB does not enforce a managed-service-style request quota. As a
+  self-hosted database, the relevant limits are operational: max concurrent
+  HTTP/PG connections, ILP TCP buffer/queue depth, query timeouts, and
+  per-server CPU/IO budgets. Limits are configurable via server.conf.
+notes: >-
+  Numeric limits are deployment-specific. Reasonable defaults are listed; tune
+  via http.* / pg.* / line.tcp.* / cairo.* settings in server.conf.
 sources:
-- https://questdb.io/
+- https://questdb.com/docs/operations/capacity-planning/
+- https://questdb.com/docs/operations/multiple-databases/
+- https://questdb.com/docs/concept/storage-model/
 responseCodes:
-  throttled: 429
+  busy: 503
 limits:
-- name: Default
-  scope: account
-  metric: varies
-  limit: see provider documentation
-  notes: Pending reconciliation.
+- name: HTTP REST default workers
+  scope: server
+  metric: workers
+  limit: see http.worker.count in server.conf
+  notes: Default tuned to host CPU; controls request concurrency on port 9000.
+- name: Postgres wire connections
+  scope: server
+  metric: connections
+  limit: see pg.net.connection.limit in server.conf
+  notes: Default 64 connections on port 8812.
+- name: ILP TCP connections
+  scope: server
+  metric: connections
+  limit: see line.tcp.net.connection.limit in server.conf
+  notes: Default 256 ILP TCP connections on port 9009.
+- name: Query timeout
+  scope: server
+  metric: ms
+  limit: see query.timeout.sec in server.conf
+  notes: Long-running queries are terminated server-side.
 policies:
 - name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+  description: ILP HTTP clients should retry on 5xx with exponential backoff; ILP TCP clients should buffer and reconnect on disconnect.
+- name: Capacity Planning
+  description: Size workers, RAM and disks per QuestDB capacity-planning guide; no managed throttling.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
