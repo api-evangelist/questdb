@@ -1,7 +1,7 @@
 aid: questdb
 url: https://raw.githubusercontent.com/api-evangelist/questdb/refs/heads/main/apis.yml
 name: QuestDB
-x-type: company
+kind: company
 description: >-
   QuestDB is a high-performance open-source time-series database. It exposes
   three programmatic surfaces — an HTTP REST API for SQL queries and CSV
