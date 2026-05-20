@@ -84,6 +84,8 @@ apis:
       - Wire Protocol
       - JDBC
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/questdb
   - type: Website
     url: https://questdb.com/
   - type: Documentation
