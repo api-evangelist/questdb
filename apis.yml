@@ -102,6 +102,8 @@ common:
     url: rate-limits/questdb-rate-limits.yml
   - type: FinOps
     url: finops/questdb-finops.yml
+  - type: LLMsTxt
+    url: https://questdb.com/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
