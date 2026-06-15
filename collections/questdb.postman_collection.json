@@ -1,0 +1,1112 @@
+{
+  "item": [
+    {
+      "id": "71f8a545-e790-4a70-81d5-4399ed8ea15a",
+      "name": "Execute a SQL statement",
+      "request": {
+        "name": "Execute a SQL statement",
+        "description": {
+          "content": "Compiles and executes a SQL statement passed as the `query` URL parameter and returns JSON-formatted results.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "exec"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "query",
+              "value": "<string>",
+              "description": "(Required) SQL statement to execute (URL-encoded)."
+            },
+            {
+              "disabled": false,
+              "key": "limit",
+              "value": "<string>",
+              "description": "Optional row range, for example `0,1000`."
+            },
+            {
+              "disabled": false,
+              "key": "count",
+              "value": "<boolean>",
+              "description": "Include total row count in the response."
+            },
+            {
+              "disabled": false,
+              "key": "nm",
+              "value": "<boolean>",
+              "description": "Skip metadata in the response when true."
+            },
+            {
+              "disabled": false,
+              "key": "timings",
+              "value": "<boolean>",
+              "description": "Include execution timings in the response."
+            }
+          ],
+          "variable": [
+            {
+              "description": "QuestDB host",
+              "type": "any",
+              "value": "{{host}}",
+              "key": "host"
+            },
+            {
+              "description": "QuestDB HTTP port",
+              "type": "any",
+              "value": "{{port}}",
+              "key": "port"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "6b93353c-376e-490c-9e1a-2dc0cc4916ef",
+          "name": "Query executed successfully.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "exec"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "key": "limit",
+                  "value": "<string>"
+                },
+                {
+                  "key": "count",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "nm",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "timings",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "QuestDB host",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                },
+                {
+                  "description": "QuestDB HTTP port",
+                  "type": "any",
+                  "value": "{{port}}",
+                  "key": "port"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"query\": \"string\",\n  \"columns\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  ],\n  \"dataset\": [\n    [],\n    []\n  ],\n  \"count\": 5131,\n  \"timings\": {}\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "009221f0-094b-4006-b7ab-dd0748f58de2",
+          "name": "Invalid query.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "exec"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "key": "limit",
+                  "value": "<string>"
+                },
+                {
+                  "key": "count",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "nm",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "timings",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "QuestDB host",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                },
+                {
+                  "description": "QuestDB HTTP port",
+                  "type": "any",
+                  "value": "{{port}}",
+                  "key": "port"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"query\": \"string\",\n  \"error\": \"string\",\n  \"position\": 8509\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "2f8a41d8-e584-4e6e-afa0-7980a4182a55",
+      "name": "Import a CSV file",
+      "request": {
+        "name": "Import a CSV file",
+        "description": {
+          "content": "Imports a CSV file into a QuestDB table using a multipart form upload.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "imp"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "name",
+              "value": "<string>",
+              "description": "Target table name (defaults to the uploaded file name)."
+            },
+            {
+              "disabled": false,
+              "key": "overwrite",
+              "value": "<boolean>",
+              "description": "When true, drop and recreate the target table."
+            },
+            {
+              "disabled": false,
+              "key": "forceHeader",
+              "value": "<boolean>",
+              "description": "Treat the first row as a header row."
+            },
+            {
+              "disabled": false,
+              "key": "timestamp",
+              "value": "<string>",
+              "description": "Name of the designated timestamp column."
+            },
+            {
+              "disabled": false,
+              "key": "partitionBy",
+              "value": "<string>",
+              "description": "Partition strategy (NONE, HOUR, DAY, WEEK, MONTH, YEAR)."
+            },
+            {
+              "disabled": false,
+              "key": "fmt",
+              "value": "<string>",
+              "description": "Response format, for example `json` or `tabular`."
+            }
+          ],
+          "variable": [
+            {
+              "description": "QuestDB host",
+              "type": "any",
+              "value": "{{host}}",
+              "key": "host"
+            },
+            {
+              "description": "QuestDB HTTP port",
+              "type": "any",
+              "value": "{{port}}",
+              "key": "port"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "multipart/form-data"
+          },
+          {
+            "key": "Accept",
+            "value": "text/plain"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "schema",
+              "value": "<string>",
+              "type": "text",
+              "description": "Optional JSON schema describing column types."
+            },
+            {
+              "key": "data",
+              "type": "file",
+              "description": "CSV file payload."
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "3a7b55c9-d7fe-45ca-9e60-81a9be6b48c5",
+          "name": "Import completed.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "imp"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "key": "overwrite",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "forceHeader",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "timestamp",
+                  "value": "<string>"
+                },
+                {
+                  "key": "partitionBy",
+                  "value": "<string>"
+                },
+                {
+                  "key": "fmt",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "QuestDB host",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                },
+                {
+                  "description": "QuestDB HTTP port",
+                  "type": "any",
+                  "value": "{{port}}",
+                  "key": "port"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "description": {
+                    "content": "Optional JSON schema describing column types.",
+                    "type": "text/plain"
+                  },
+                  "key": "schema",
+                  "value": "<string>",
+                  "type": "text"
+                },
+                {
+                  "description": {
+                    "content": "CSV file payload.",
+                    "type": "text/plain"
+                  },
+                  "key": "data",
+                  "value": "<binary>",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "c7247228-1d02-4f88-970a-0163533a7fd9",
+          "name": "Invalid CSV or request.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "imp"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "key": "overwrite",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "forceHeader",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "timestamp",
+                  "value": "<string>"
+                },
+                {
+                  "key": "partitionBy",
+                  "value": "<string>"
+                },
+                {
+                  "key": "fmt",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "QuestDB host",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                },
+                {
+                  "description": "QuestDB HTTP port",
+                  "type": "any",
+                  "value": "{{port}}",
+                  "key": "port"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "description": {
+                    "content": "Optional JSON schema describing column types.",
+                    "type": "text/plain"
+                  },
+                  "key": "schema",
+                  "value": "<string>",
+                  "type": "text"
+                },
+                {
+                  "description": {
+                    "content": "CSV file payload.",
+                    "type": "text/plain"
+                  },
+                  "key": "data",
+                  "value": "<binary>",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"query\": \"string\",\n  \"error\": \"string\",\n  \"position\": 8509\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "b0cff39c-251f-4d0d-b161-a71032a91c4a",
+      "name": "Export query results as CSV",
+      "request": {
+        "name": "Export query results as CSV",
+        "description": {
+          "content": "Executes a SQL statement and streams the result set as CSV.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "exp"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "query",
+              "value": "<string>",
+              "description": "(Required) SQL statement to execute (URL-encoded)."
+            },
+            {
+              "disabled": false,
+              "key": "limit",
+              "value": "<string>",
+              "description": "Optional row range, for example `0,1000`."
+            }
+          ],
+          "variable": [
+            {
+              "description": "QuestDB host",
+              "type": "any",
+              "value": "{{host}}",
+              "key": "host"
+            },
+            {
+              "description": "QuestDB HTTP port",
+              "type": "any",
+              "value": "{{port}}",
+              "key": "port"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/csv"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "cb953c6b-c4e1-48ef-8ea7-7b74c6112146",
+          "name": "CSV export stream.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "exp"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "key": "limit",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "QuestDB host",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                },
+                {
+                  "description": "QuestDB HTTP port",
+                  "type": "any",
+                  "value": "{{port}}",
+                  "key": "port"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/csv"
+            }
+          ],
+          "body": "string",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "316e8bf9-1d4f-4b83-92f9-57d8aa6434ac",
+          "name": "Invalid query.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "exp"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "key": "limit",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "QuestDB host",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                },
+                {
+                  "description": "QuestDB HTTP port",
+                  "type": "any",
+                  "value": "{{port}}",
+                  "key": "port"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"query\": \"string\",\n  \"error\": \"string\",\n  \"position\": 8509\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "32a603e4-caf2-4c3f-805a-10147ab315d8",
+      "name": "Check whether a table exists",
+      "request": {
+        "name": "Check whether a table exists",
+        "description": {
+          "content": "Returns whether the supplied table exists in the database.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "chk"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "f",
+              "value": "<string>",
+              "description": "Response format, typically `json`."
+            },
+            {
+              "disabled": false,
+              "key": "j",
+              "value": "<string>",
+              "description": "(Required) Table name to check."
+            }
+          ],
+          "variable": [
+            {
+              "description": "QuestDB host",
+              "type": "any",
+              "value": "{{host}}",
+              "key": "host"
+            },
+            {
+              "description": "QuestDB HTTP port",
+              "type": "any",
+              "value": "{{port}}",
+              "key": "port"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "fd80c762-de35-440f-8d19-244d6ef7e0d8",
+          "name": "Existence response.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "chk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "f",
+                  "value": "json"
+                },
+                {
+                  "key": "j",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "QuestDB host",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                },
+                {
+                  "description": "QuestDB HTTP port",
+                  "type": "any",
+                  "value": "{{port}}",
+                  "key": "port"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"status\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "730b88f2-e835-42c5-8e2f-88904de3549f",
+      "name": "Ingest data via InfluxDB Line Protocol over HTTP",
+      "request": {
+        "name": "Ingest data via InfluxDB Line Protocol over HTTP",
+        "description": {
+          "content": "Accepts InfluxDB Line Protocol payloads for high-throughput time-series ingestion. Served on the same HTTP port as the REST API.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "write"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "precision",
+              "value": "<string>",
+              "description": "Timestamp precision (n, u, ms, s)."
+            }
+          ],
+          "variable": [
+            {
+              "description": "QuestDB host",
+              "type": "any",
+              "value": "{{host}}",
+              "key": "host"
+            },
+            {
+              "description": "QuestDB HTTP port",
+              "type": "any",
+              "value": "{{port}}",
+              "key": "port"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "<string>"
+        }
+      },
+      "response": [
+        {
+          "id": "54d1c996-c869-428b-becd-e1ae16244103",
+          "name": "Ingestion accepted.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "write"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "precision",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "QuestDB host",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                },
+                {
+                  "description": "QuestDB HTTP port",
+                  "type": "any",
+                  "value": "{{port}}",
+                  "key": "port"
+                }
+              ]
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "status": "No Content",
+          "code": 204,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "0084c4f1-ff97-4b28-9413-402cee259a94",
+          "name": "Malformed line protocol payload.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "write"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "precision",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "QuestDB host",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                },
+                {
+                  "description": "QuestDB HTTP port",
+                  "type": "any",
+                  "value": "{{port}}",
+                  "key": "port"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"query\": \"string\",\n  \"error\": \"string\",\n  \"position\": 8509\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "d0105155-061e-4678-ac46-33eec7b98f21",
+      "name": "Return effective runtime settings",
+      "request": {
+        "name": "Return effective runtime settings",
+        "description": {
+          "content": "Returns the current server runtime settings as JSON.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "settings"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "description": "QuestDB host",
+              "type": "any",
+              "value": "{{host}}",
+              "key": "host"
+            },
+            {
+              "description": "QuestDB HTTP port",
+              "type": "any",
+              "value": "{{port}}",
+              "key": "port"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "9f06b113-f89b-4c04-b86c-f2baec34624d",
+          "name": "Runtime settings.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "QuestDB host",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                },
+                {
+                  "description": "QuestDB HTTP port",
+                  "type": "any",
+                  "value": "{{port}}",
+                  "key": "port"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"key_0\": 2243\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "QuestDB host",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "localhost",
+      "key": "host"
+    },
+    {
+      "description": {
+        "content": "QuestDB HTTP port",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "9000",
+      "key": "port"
+    },
+    {
+      "type": "string",
+      "value": "http://{{host}}:{{port}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "3ea5dcd8-e1fe-4230-bb0e-c3f8f7f4de20",
+    "name": "QuestDB HTTP REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HTTP REST endpoints exposed by QuestDB on the default HTTP port (9000) for SQL execution, CSV import/export, table existence checks, runtime metrics, and the InfluxDB Line Protocol HTTP ingestion endpoint. Authentication is unauthenticated by default in the open-source build; QuestDB Enterprise supports HTTP Basic Authentication and TLS.\n\nContact Support:\n Name: QuestDB Documentation",
+      "type": "text/plain"
+    }
+  }
+}

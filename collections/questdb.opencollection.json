@@ -1,0 +1,197 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "QuestDB HTTP REST API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Execute a SQL statement",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://{host}:{port}/exec",
+        "params": [
+          {
+            "name": "query",
+            "value": "",
+            "type": "query",
+            "description": "SQL statement to execute (URL-encoded)."
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query",
+            "description": "Optional row range, for example `0,1000`."
+          },
+          {
+            "name": "count",
+            "value": "",
+            "type": "query",
+            "description": "Include total row count in the response."
+          },
+          {
+            "name": "nm",
+            "value": "",
+            "type": "query",
+            "description": "Skip metadata in the response when true."
+          },
+          {
+            "name": "timings",
+            "value": "",
+            "type": "query",
+            "description": "Include execution timings in the response."
+          }
+        ]
+      },
+      "docs": "Compiles and executes a SQL statement passed as the `query` URL parameter and returns JSON-formatted results."
+    },
+    {
+      "info": {
+        "name": "Import a CSV file",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "http://{host}:{port}/imp",
+        "params": [
+          {
+            "name": "name",
+            "value": "",
+            "type": "query",
+            "description": "Target table name (defaults to the uploaded file name)."
+          },
+          {
+            "name": "overwrite",
+            "value": "",
+            "type": "query",
+            "description": "When true, drop and recreate the target table."
+          },
+          {
+            "name": "forceHeader",
+            "value": "",
+            "type": "query",
+            "description": "Treat the first row as a header row."
+          },
+          {
+            "name": "timestamp",
+            "value": "",
+            "type": "query",
+            "description": "Name of the designated timestamp column."
+          },
+          {
+            "name": "partitionBy",
+            "value": "",
+            "type": "query",
+            "description": "Partition strategy (NONE, HOUR, DAY, WEEK, MONTH, YEAR)."
+          },
+          {
+            "name": "fmt",
+            "value": "",
+            "type": "query",
+            "description": "Response format, for example `json` or `tabular`."
+          }
+        ],
+        "body": {
+          "type": "multipart-form",
+          "data": [
+            {
+              "name": "schema",
+              "type": "text",
+              "value": ""
+            },
+            {
+              "name": "data",
+              "type": "text",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "docs": "Imports a CSV file into a QuestDB table using a multipart form upload."
+    },
+    {
+      "info": {
+        "name": "Export query results as CSV",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://{host}:{port}/exp",
+        "params": [
+          {
+            "name": "query",
+            "value": "",
+            "type": "query",
+            "description": "SQL statement to execute (URL-encoded)."
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query",
+            "description": "Optional row range, for example `0,1000`."
+          }
+        ]
+      },
+      "docs": "Executes a SQL statement and streams the result set as CSV."
+    },
+    {
+      "info": {
+        "name": "Check whether a table exists",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://{host}:{port}/chk",
+        "params": [
+          {
+            "name": "f",
+            "value": "",
+            "type": "query",
+            "description": "Response format, typically `json`."
+          },
+          {
+            "name": "j",
+            "value": "",
+            "type": "query",
+            "description": "Table name to check."
+          }
+        ]
+      },
+      "docs": "Returns whether the supplied table exists in the database."
+    },
+    {
+      "info": {
+        "name": "Ingest data via InfluxDB Line Protocol over HTTP",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "http://{host}:{port}/write",
+        "params": [
+          {
+            "name": "precision",
+            "value": "",
+            "type": "query",
+            "description": "Timestamp precision (n, u, ms, s)."
+          }
+        ]
+      },
+      "docs": "Accepts InfluxDB Line Protocol payloads for high-throughput time-series ingestion. Served on the same HTTP port as the REST API."
+    },
+    {
+      "info": {
+        "name": "Return effective runtime settings",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "http://{host}:{port}/settings"
+      },
+      "docs": "Returns the current server runtime settings as JSON."
+    }
+  ],
+  "bundled": true
+}
