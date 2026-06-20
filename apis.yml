@@ -9,7 +9,7 @@ description: >-
   high-throughput ingestion, and the PostgreSQL wire protocol for compatibility
   with existing tooling. QuestDB is offered as open-source, Enterprise
   (self-hosted) and Bring-Your-Own-Cloud (BYOC).
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Database
   - Time-Series
@@ -28,7 +28,7 @@ apis:
       HTTP REST endpoints for SQL execution (/exec), CSV import (/imp), CSV
       export (/exp), health/metrics (/chk, /metrics) and runtime settings
       (/settings). Default port 9000.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://questdb.com/docs/reference/sql/overview/
     baseURL: http://<host>:9000
     tags:
@@ -47,7 +47,7 @@ apis:
     description: >-
       InfluxDB Line Protocol over TCP for high-throughput, low-latency time-series
       ingestion. Default port 9009. Supports authentication and TLS in Enterprise.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://questdb.com/docs/reference/api/ilp/overview/
     baseURL: tcp://<host>:9009
     tags:
@@ -63,7 +63,7 @@ apis:
       Influx Line Protocol over HTTP /write endpoint for ingestion clients that
       prefer HTTP (TLS, auth and ack semantics easier than the TCP variant).
       Served on the same port (9000) as the REST API.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://questdb.com/docs/reference/api/ilp/overview/
     baseURL: http://<host>:9000
     tags:
@@ -76,7 +76,7 @@ apis:
       PostgreSQL wire-protocol compatibility for queries via psql, JDBC and any
       Postgres-compatible client. Default port 8812. Supports a subset of
       Postgres features sufficient for SQL analytics on QuestDB.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://questdb.com/docs/develop/connect/
     baseURL: postgres://<host>:8812
     tags:
