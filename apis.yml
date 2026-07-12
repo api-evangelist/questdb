@@ -84,6 +84,10 @@ apis:
       - Wire Protocol
       - JDBC
 common:
+  - type: DomainSecurity
+    url: security/questdb-domain-security.yml
+  - type: Authentication
+    url: authentication/questdb-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/questdb
   - type: Website
@@ -98,6 +102,8 @@ common:
     url: https://questdb.com/byoc/
   - type: Plans
     url: plans/questdb-plans-pricing.yml
+  - url: https://questdb.com/rss.xml
+    type: Blog
   - type: RateLimits
     url: rate-limits/questdb-rate-limits.yml
   - type: FinOps

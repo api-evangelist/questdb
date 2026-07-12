@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/questdb-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic Authentication (QuestDB Enterprise).
+  sources:
+  - openapi/questdb-openapi.yml
