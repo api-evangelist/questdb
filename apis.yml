@@ -84,6 +84,8 @@ apis:
       - Wire Protocol
       - JDBC
 common:
+  - type: AgenticAccess
+    url: agentic-access/questdb-agentic-access.yml
   - type: DomainSecurity
     url: security/questdb-domain-security.yml
   - type: Authentication
