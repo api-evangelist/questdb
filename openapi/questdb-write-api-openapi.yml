@@ -1,0 +1,78 @@
+openapi: 3.1.0
+info:
+  title: QuestDB HTTP REST Chk Write API
+  version: 1.0.0
+  description: HTTP REST endpoints exposed by QuestDB on the default HTTP port (9000) for SQL execution, CSV import/export, table existence checks, runtime metrics, and the InfluxDB Line Protocol HTTP ingestion endpoint. Authentication is unauthenticated by default in the open-source build; QuestDB Enterprise supports HTTP Basic Authentication and TLS.
+  contact:
+    name: QuestDB Documentation
+    url: https://questdb.com/docs/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://{host}:{port}
+  description: QuestDB HTTP server
+  variables:
+    host:
+      default: localhost
+      description: QuestDB host
+    port:
+      default: '9000'
+      description: QuestDB HTTP port
+security:
+- {}
+- basicAuth: []
+tags:
+- name: Write
+paths:
+  /write:
+    post:
+      summary: Ingest data via InfluxDB Line Protocol over HTTP
+      description: Accepts InfluxDB Line Protocol payloads for high-throughput time-series ingestion. Served on the same HTTP port as the REST API.
+      operationId: ilpWrite
+      parameters:
+      - name: precision
+        in: query
+        required: false
+        description: Timestamp precision (n, u, ms, s).
+        schema:
+          type: string
+          enum:
+          - n
+          - u
+          - ms
+          - s
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+              description: Newline-delimited InfluxDB Line Protocol records.
+      responses:
+        '204':
+          description: Ingestion accepted.
+        '400':
+          description: Malformed line protocol payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Write
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        query:
+          type: string
+        error:
+          type: string
+        position:
+          type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication (QuestDB Enterprise).

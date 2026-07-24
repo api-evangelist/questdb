@@ -1,0 +1,76 @@
+openapi: 3.1.0
+info:
+  title: QuestDB HTTP REST Chk Exp API
+  version: 1.0.0
+  description: HTTP REST endpoints exposed by QuestDB on the default HTTP port (9000) for SQL execution, CSV import/export, table existence checks, runtime metrics, and the InfluxDB Line Protocol HTTP ingestion endpoint. Authentication is unauthenticated by default in the open-source build; QuestDB Enterprise supports HTTP Basic Authentication and TLS.
+  contact:
+    name: QuestDB Documentation
+    url: https://questdb.com/docs/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://{host}:{port}
+  description: QuestDB HTTP server
+  variables:
+    host:
+      default: localhost
+      description: QuestDB host
+    port:
+      default: '9000'
+      description: QuestDB HTTP port
+security:
+- {}
+- basicAuth: []
+tags:
+- name: Exp
+paths:
+  /exp:
+    get:
+      summary: Export query results as CSV
+      description: Executes a SQL statement and streams the result set as CSV.
+      operationId: exportCsv
+      parameters:
+      - name: query
+        in: query
+        required: true
+        description: SQL statement to execute (URL-encoded).
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        description: Optional row range, for example `0,1000`.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: CSV export stream.
+          content:
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Invalid query.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Exp
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        query:
+          type: string
+        error:
+          type: string
+        position:
+          type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication (QuestDB Enterprise).

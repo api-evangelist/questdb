@@ -1,0 +1,117 @@
+openapi: 3.1.0
+info:
+  title: QuestDB HTTP REST Chk Exec API
+  version: 1.0.0
+  description: HTTP REST endpoints exposed by QuestDB on the default HTTP port (9000) for SQL execution, CSV import/export, table existence checks, runtime metrics, and the InfluxDB Line Protocol HTTP ingestion endpoint. Authentication is unauthenticated by default in the open-source build; QuestDB Enterprise supports HTTP Basic Authentication and TLS.
+  contact:
+    name: QuestDB Documentation
+    url: https://questdb.com/docs/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://{host}:{port}
+  description: QuestDB HTTP server
+  variables:
+    host:
+      default: localhost
+      description: QuestDB host
+    port:
+      default: '9000'
+      description: QuestDB HTTP port
+security:
+- {}
+- basicAuth: []
+tags:
+- name: Exec
+paths:
+  /exec:
+    get:
+      summary: Execute a SQL statement
+      description: Compiles and executes a SQL statement passed as the `query` URL parameter and returns JSON-formatted results.
+      operationId: execQuery
+      parameters:
+      - name: query
+        in: query
+        required: true
+        description: SQL statement to execute (URL-encoded).
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        description: Optional row range, for example `0,1000`.
+        schema:
+          type: string
+      - name: count
+        in: query
+        required: false
+        description: Include total row count in the response.
+        schema:
+          type: boolean
+      - name: nm
+        in: query
+        required: false
+        description: Skip metadata in the response when true.
+        schema:
+          type: boolean
+      - name: timings
+        in: query
+        required: false
+        description: Include execution timings in the response.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Query executed successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExecResponse'
+        '400':
+          description: Invalid query.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Exec
+components:
+  schemas:
+    ExecResponse:
+      type: object
+      properties:
+        query:
+          type: string
+        columns:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+        dataset:
+          type: array
+          items:
+            type: array
+            items: {}
+        count:
+          type: integer
+        timings:
+          type: object
+    Error:
+      type: object
+      properties:
+        query:
+          type: string
+        error:
+          type: string
+        position:
+          type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication (QuestDB Enterprise).

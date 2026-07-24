@@ -1,0 +1,65 @@
+openapi: 3.1.0
+info:
+  title: QuestDB HTTP REST Chk API
+  version: 1.0.0
+  description: HTTP REST endpoints exposed by QuestDB on the default HTTP port (9000) for SQL execution, CSV import/export, table existence checks, runtime metrics, and the InfluxDB Line Protocol HTTP ingestion endpoint. Authentication is unauthenticated by default in the open-source build; QuestDB Enterprise supports HTTP Basic Authentication and TLS.
+  contact:
+    name: QuestDB Documentation
+    url: https://questdb.com/docs/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://{host}:{port}
+  description: QuestDB HTTP server
+  variables:
+    host:
+      default: localhost
+      description: QuestDB host
+    port:
+      default: '9000'
+      description: QuestDB HTTP port
+security:
+- {}
+- basicAuth: []
+tags:
+- name: Chk
+paths:
+  /chk:
+    get:
+      summary: Check whether a table exists
+      description: Returns whether the supplied table exists in the database.
+      operationId: checkTable
+      parameters:
+      - name: f
+        in: query
+        required: false
+        description: Response format, typically `json`.
+        schema:
+          type: string
+          example: json
+      - name: j
+        in: query
+        required: true
+        description: Table name to check.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Existence response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: '`Exists` or `Does not exist`.'
+      tags:
+      - Chk
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication (QuestDB Enterprise).

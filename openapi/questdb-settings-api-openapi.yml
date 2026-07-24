@@ -1,0 +1,48 @@
+openapi: 3.1.0
+info:
+  title: QuestDB HTTP REST Chk Settings API
+  version: 1.0.0
+  description: HTTP REST endpoints exposed by QuestDB on the default HTTP port (9000) for SQL execution, CSV import/export, table existence checks, runtime metrics, and the InfluxDB Line Protocol HTTP ingestion endpoint. Authentication is unauthenticated by default in the open-source build; QuestDB Enterprise supports HTTP Basic Authentication and TLS.
+  contact:
+    name: QuestDB Documentation
+    url: https://questdb.com/docs/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://{host}:{port}
+  description: QuestDB HTTP server
+  variables:
+    host:
+      default: localhost
+      description: QuestDB host
+    port:
+      default: '9000'
+      description: QuestDB HTTP port
+security:
+- {}
+- basicAuth: []
+tags:
+- name: Settings
+paths:
+  /settings:
+    get:
+      summary: Return effective runtime settings
+      description: Returns the current server runtime settings as JSON.
+      operationId: getSettings
+      responses:
+        '200':
+          description: Runtime settings.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+      tags:
+      - Settings
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication (QuestDB Enterprise).

@@ -1,0 +1,124 @@
+openapi: 3.1.0
+info:
+  title: QuestDB HTTP REST Chk Imp API
+  version: 1.0.0
+  description: HTTP REST endpoints exposed by QuestDB on the default HTTP port (9000) for SQL execution, CSV import/export, table existence checks, runtime metrics, and the InfluxDB Line Protocol HTTP ingestion endpoint. Authentication is unauthenticated by default in the open-source build; QuestDB Enterprise supports HTTP Basic Authentication and TLS.
+  contact:
+    name: QuestDB Documentation
+    url: https://questdb.com/docs/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://{host}:{port}
+  description: QuestDB HTTP server
+  variables:
+    host:
+      default: localhost
+      description: QuestDB host
+    port:
+      default: '9000'
+      description: QuestDB HTTP port
+security:
+- {}
+- basicAuth: []
+tags:
+- name: Imp
+paths:
+  /imp:
+    post:
+      summary: Import a CSV file
+      description: Imports a CSV file into a QuestDB table using a multipart form upload.
+      operationId: importCsv
+      parameters:
+      - name: name
+        in: query
+        required: false
+        description: Target table name (defaults to the uploaded file name).
+        schema:
+          type: string
+      - name: overwrite
+        in: query
+        required: false
+        description: When true, drop and recreate the target table.
+        schema:
+          type: boolean
+      - name: forceHeader
+        in: query
+        required: false
+        description: Treat the first row as a header row.
+        schema:
+          type: boolean
+      - name: timestamp
+        in: query
+        required: false
+        description: Name of the designated timestamp column.
+        schema:
+          type: string
+      - name: partitionBy
+        in: query
+        required: false
+        description: Partition strategy (NONE, HOUR, DAY, WEEK, MONTH, YEAR).
+        schema:
+          type: string
+          enum:
+          - NONE
+          - HOUR
+          - DAY
+          - WEEK
+          - MONTH
+          - YEAR
+      - name: fmt
+        in: query
+        required: false
+        description: Response format, for example `json` or `tabular`.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                schema:
+                  type: string
+                  description: Optional JSON schema describing column types.
+                data:
+                  type: string
+                  format: binary
+                  description: CSV file payload.
+      responses:
+        '200':
+          description: Import completed.
+          content:
+            text/plain:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid CSV or request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Imp
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        query:
+          type: string
+        error:
+          type: string
+        position:
+          type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication (QuestDB Enterprise).
