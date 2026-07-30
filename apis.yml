@@ -9,7 +9,20 @@ description: >-
   high-throughput ingestion, and the PostgreSQL wire protocol for compatibility
   with existing tooling. QuestDB is offered as open-source, Enterprise
   (self-hosted) and Bring-Your-Own-Cloud (BYOC).
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/questdb.png
 tags:
   - Database
   - Time-Series
@@ -22,67 +35,124 @@ created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
 apis:
-  - aid: questdb:rest-http
-    name: QuestDB HTTP REST API
-    description: >-
-      HTTP REST endpoints for SQL execution (/exec), CSV import (/imp), CSV
-      export (/exp), health/metrics (/chk, /metrics) and runtime settings
-      (/settings). Default port 9000.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://questdb.com/docs/reference/sql/overview/
-    baseURL: http://<host>:9000
-    tags:
-      - REST
-      - SQL
-      - CSV
-      - Health
-      - Metrics
-    properties:
-      - type: Documentation
-        url: https://questdb.com/docs/
-      - type: APIReference
-        url: https://questdb.com/docs/reference/api/rest/
-  - aid: questdb:ilp-tcp
-    name: QuestDB ILP TCP Ingestion
-    description: >-
-      InfluxDB Line Protocol over TCP for high-throughput, low-latency time-series
-      ingestion. Default port 9009. Supports authentication and TLS in Enterprise.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://questdb.com/docs/reference/api/ilp/overview/
-    baseURL: tcp://<host>:9009
-    tags:
-      - ILP
-      - TCP
-      - Ingestion
-    properties:
-      - type: Documentation
-        url: https://questdb.com/docs/reference/api/ilp/overview/
-  - aid: questdb:ilp-http
-    name: QuestDB ILP HTTP Ingestion
-    description: >-
-      Influx Line Protocol over HTTP /write endpoint for ingestion clients that
-      prefer HTTP (TLS, auth and ack semantics easier than the TCP variant).
-      Served on the same port (9000) as the REST API.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://questdb.com/docs/reference/api/ilp/overview/
-    baseURL: http://<host>:9000
-    tags:
-      - ILP
-      - HTTP
-      - Ingestion
-  - aid: questdb:postgres-wire
-    name: QuestDB PostgreSQL Wire Interface
-    description: >-
-      PostgreSQL wire-protocol compatibility for queries via psql, JDBC and any
-      Postgres-compatible client. Default port 8812. Supports a subset of
-      Postgres features sufficient for SQL analytics on QuestDB.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://questdb.com/docs/develop/connect/
-    baseURL: postgres://<host>:8812
-    tags:
-      - PostgreSQL
-      - Wire Protocol
-      - JDBC
+- aid: questdb:rest-http
+  name: QuestDB HTTP REST API
+  description: >-
+    HTTP REST endpoints for SQL execution (/exec), CSV import (/imp), CSV export (/exp), health/metrics
+    (/chk, /metrics) and runtime settings (/settings). Default port 9000.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://questdb.com/docs/reference/sql/overview/
+  baseURL: http://<host>:9000
+  tags:
+  - REST
+  - SQL
+  - CSV
+  - Health
+  - Metrics
+  properties:
+  - type: Documentation
+    url: https://questdb.com/docs/
+  - type: APIReference
+    url: https://questdb.com/docs/reference/api/rest/
+- aid: questdb:ilp-tcp
+  name: QuestDB ILP TCP Ingestion
+  description: >-
+    InfluxDB Line Protocol over TCP for high-throughput, low-latency time-series ingestion. Default port
+    9009. Supports authentication and TLS in Enterprise.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://questdb.com/docs/reference/api/ilp/overview/
+  baseURL: tcp://<host>:9009
+  tags:
+  - ILP
+  - TCP
+  - Ingestion
+  properties:
+  - type: Documentation
+    url: https://questdb.com/docs/reference/api/ilp/overview/
+- aid: questdb:ilp-http
+  name: QuestDB ILP HTTP Ingestion
+  description: >-
+    Influx Line Protocol over HTTP /write endpoint for ingestion clients that prefer HTTP (TLS, auth and
+    ack semantics easier than the TCP variant). Served on the same port (9000) as the REST API.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://questdb.com/docs/reference/api/ilp/overview/
+  baseURL: http://<host>:9000
+  tags:
+  - ILP
+  - HTTP
+  - Ingestion
+- aid: questdb:postgres-wire
+  name: QuestDB PostgreSQL Wire Interface
+  description: >-
+    PostgreSQL wire-protocol compatibility for queries via psql, JDBC and any Postgres-compatible client.
+    Default port 8812. Supports a subset of Postgres features sufficient for SQL analytics on QuestDB.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://questdb.com/docs/develop/connect/
+  baseURL: postgres://<host>:8812
+  tags:
+  - PostgreSQL
+  - Wire Protocol
+  - JDBC
+- aid: questdb:questdb-chk-api
+  name: QuestDB Chk API
+  description: The Chk API from QuestDB — 1 operation(s) for chk.
+  humanURL: https://questdb.com/docs/reference/sql/overview/
+  baseURL: http://<host>:9000
+  tags:
+  - Chk
+  properties:
+  - type: OpenAPI
+    url: openapi/questdb-chk-api-openapi.yml
+- aid: questdb:questdb-exec-api
+  name: QuestDB Exec API
+  description: The Exec API from QuestDB — 1 operation(s) for exec.
+  humanURL: https://questdb.com/docs/reference/sql/overview/
+  baseURL: http://<host>:9000
+  tags:
+  - Exec
+  properties:
+  - type: OpenAPI
+    url: openapi/questdb-exec-api-openapi.yml
+- aid: questdb:questdb-exp-api
+  name: QuestDB Exp API
+  description: The Exp API from QuestDB — 1 operation(s) for exp.
+  humanURL: https://questdb.com/docs/reference/sql/overview/
+  baseURL: http://<host>:9000
+  tags:
+  - Exp
+  properties:
+  - type: OpenAPI
+    url: openapi/questdb-exp-api-openapi.yml
+- aid: questdb:questdb-imp-api
+  name: QuestDB Imp API
+  description: The Imp API from QuestDB — 1 operation(s) for imp.
+  humanURL: https://questdb.com/docs/reference/sql/overview/
+  baseURL: http://<host>:9000
+  tags:
+  - Imp
+  properties:
+  - type: OpenAPI
+    url: openapi/questdb-imp-api-openapi.yml
+- aid: questdb:questdb-settings-api
+  name: QuestDB Settings API
+  description: The Settings API from QuestDB — 1 operation(s) for settings.
+  humanURL: https://questdb.com/docs/reference/sql/overview/
+  baseURL: http://<host>:9000
+  tags:
+  - Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/questdb-settings-api-openapi.yml
+- aid: questdb:questdb-write-api
+  name: QuestDB Write API
+  description: The Write API from QuestDB — 1 operation(s) for write.
+  humanURL: https://questdb.com/docs/reference/sql/overview/
+  baseURL: http://<host>:9000
+  tags:
+  - Write
+  properties:
+  - type: OpenAPI
+    url: openapi/questdb-write-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/questdb-agentic-access.yml
