@@ -1,0 +1,24 @@
+{
+  "provider": "questdb",
+  "sources": [
+    "questdb-chk-api-openapi.yml",
+    "questdb-exec-api-openapi.yml",
+    "questdb-exp-api-openapi.yml",
+    "questdb-imp-api-openapi.yml",
+    "questdb-settings-api-openapi.yml",
+    "questdb-write-api-openapi.yml"
+  ],
+  "outputs": [
+    "questdb-chk-api-openapi.yml",
+    "questdb-exec-api-openapi.yml",
+    "questdb-exp-api-openapi.yml",
+    "questdb-imp-api-openapi.yml",
+    "questdb-settings-api-openapi.yml",
+    "questdb-write-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
