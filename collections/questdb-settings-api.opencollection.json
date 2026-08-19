@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "QuestDB HTTP REST Chk Settings API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Return effective runtime settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/settings"
+          },
+          "docs": "Returns the current server runtime settings as JSON."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

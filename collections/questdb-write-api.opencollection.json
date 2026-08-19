@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "QuestDB HTTP REST Chk Write API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Write",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ingest data via InfluxDB Line Protocol over HTTP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/write",
+            "params": [
+              {
+                "name": "precision",
+                "value": "",
+                "type": "query",
+                "description": "Timestamp precision (n, u, ms, s)."
+              }
+            ]
+          },
+          "docs": "Accepts InfluxDB Line Protocol payloads for high-throughput time-series ingestion. Served on the same HTTP port as the REST API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

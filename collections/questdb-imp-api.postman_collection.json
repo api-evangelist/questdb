@@ -1,0 +1,348 @@
+{
+  "item": [
+    {
+      "id": "7e3a3792-8963-4eb2-9f30-4fe88258e0ff",
+      "name": "Imp",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "35133b54-9319-4d2b-9023-f5c31216522a",
+          "name": "Import a CSV file",
+          "request": {
+            "name": "Import a CSV file",
+            "description": {
+              "content": "Imports a CSV file into a QuestDB table using a multipart form upload.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "imp"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Target table name (defaults to the uploaded file name)."
+                },
+                {
+                  "disabled": false,
+                  "key": "overwrite",
+                  "value": "<boolean>",
+                  "description": "When true, drop and recreate the target table."
+                },
+                {
+                  "disabled": false,
+                  "key": "forceHeader",
+                  "value": "<boolean>",
+                  "description": "Treat the first row as a header row."
+                },
+                {
+                  "disabled": false,
+                  "key": "timestamp",
+                  "value": "<string>",
+                  "description": "Name of the designated timestamp column."
+                },
+                {
+                  "disabled": false,
+                  "key": "partitionBy",
+                  "value": "<string>",
+                  "description": "Partition strategy (NONE, HOUR, DAY, WEEK, MONTH, YEAR)."
+                },
+                {
+                  "disabled": false,
+                  "key": "fmt",
+                  "value": "<string>",
+                  "description": "Response format, for example `json` or `tabular`."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "QuestDB host",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                },
+                {
+                  "description": "QuestDB HTTP port",
+                  "type": "any",
+                  "value": "{{port}}",
+                  "key": "port"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "schema",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional JSON schema describing column types."
+                },
+                {
+                  "key": "data",
+                  "type": "file",
+                  "description": "CSV file payload."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2042b443-e708-4db2-b04c-c78f6cc3a5c8",
+              "name": "Import completed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "imp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "overwrite",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "forceHeader",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "timestamp",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "partitionBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fmt",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "QuestDB host",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    },
+                    {
+                      "description": "QuestDB HTTP port",
+                      "type": "any",
+                      "value": "{{port}}",
+                      "key": "port"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Optional JSON schema describing column types.",
+                        "type": "text/plain"
+                      },
+                      "key": "schema",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "CSV file payload.",
+                        "type": "text/plain"
+                      },
+                      "key": "data",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "920778b4-4e6d-4d1f-ab66-0776df83d087",
+              "name": "Invalid CSV or request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "imp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "overwrite",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "forceHeader",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "timestamp",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "partitionBy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fmt",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "QuestDB host",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    },
+                    {
+                      "description": "QuestDB HTTP port",
+                      "type": "any",
+                      "value": "{{port}}",
+                      "key": "port"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Optional JSON schema describing column types.",
+                        "type": "text/plain"
+                      },
+                      "key": "schema",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "CSV file payload.",
+                        "type": "text/plain"
+                      },
+                      "key": "data",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"query\": \"string\",\n  \"error\": \"string\",\n  \"position\": 6680\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "QuestDB host",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "localhost",
+      "key": "host"
+    },
+    {
+      "description": {
+        "content": "QuestDB HTTP port",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "9000",
+      "key": "port"
+    },
+    {
+      "type": "string",
+      "value": "http://{{host}}:{{port}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "e9494ff8-5a47-42d5-9488-aacfdf417d23",
+    "name": "QuestDB HTTP REST Chk Imp API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HTTP REST endpoints exposed by QuestDB on the default HTTP port (9000) for SQL execution, CSV import/export, table existence checks, runtime metrics, and the InfluxDB Line Protocol HTTP ingestion endpoint. Authentication is unauthenticated by default in the open-source build; QuestDB Enterprise supports HTTP Basic Authentication and TLS.\n\nContact Support:\n Name: QuestDB Documentation",
+      "type": "text/plain"
+    }
+  }
+}

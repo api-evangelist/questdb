@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "QuestDB HTTP REST Chk Imp API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Imp",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Import a CSV file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/imp",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Target table name (defaults to the uploaded file name)."
+              },
+              {
+                "name": "overwrite",
+                "value": "",
+                "type": "query",
+                "description": "When true, drop and recreate the target table."
+              },
+              {
+                "name": "forceHeader",
+                "value": "",
+                "type": "query",
+                "description": "Treat the first row as a header row."
+              },
+              {
+                "name": "timestamp",
+                "value": "",
+                "type": "query",
+                "description": "Name of the designated timestamp column."
+              },
+              {
+                "name": "partitionBy",
+                "value": "",
+                "type": "query",
+                "description": "Partition strategy (NONE, HOUR, DAY, WEEK, MONTH, YEAR)."
+              },
+              {
+                "name": "fmt",
+                "value": "",
+                "type": "query",
+                "description": "Response format, for example `json` or `tabular`."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "schema",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "data",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Imports a CSV file into a QuestDB table using a multipart form upload."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

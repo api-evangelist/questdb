@@ -1,0 +1,171 @@
+{
+  "item": [
+    {
+      "id": "5c1fc9a3-19e3-4490-9faa-a13850cfb152",
+      "name": "Chk",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ba7c698e-cd15-4253-85ae-48ea4e5acb48",
+          "name": "Check whether a table exists",
+          "request": {
+            "name": "Check whether a table exists",
+            "description": {
+              "content": "Returns whether the supplied table exists in the database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "chk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "<string>",
+                  "description": "Response format, typically `json`."
+                },
+                {
+                  "disabled": false,
+                  "key": "j",
+                  "value": "<string>",
+                  "description": "(Required) Table name to check."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "QuestDB host",
+                  "type": "any",
+                  "value": "{{host}}",
+                  "key": "host"
+                },
+                {
+                  "description": "QuestDB HTTP port",
+                  "type": "any",
+                  "value": "{{port}}",
+                  "key": "port"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1bdd679-efe0-462a-81cd-c360f089356c",
+              "name": "Existence response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "chk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "f",
+                      "value": "json"
+                    },
+                    {
+                      "key": "j",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "QuestDB host",
+                      "type": "any",
+                      "value": "{{host}}",
+                      "key": "host"
+                    },
+                    {
+                      "description": "QuestDB HTTP port",
+                      "type": "any",
+                      "value": "{{port}}",
+                      "key": "port"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "QuestDB host",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "localhost",
+      "key": "host"
+    },
+    {
+      "description": {
+        "content": "QuestDB HTTP port",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "9000",
+      "key": "port"
+    },
+    {
+      "type": "string",
+      "value": "http://{{host}}:{{port}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "0fd324de-cc16-4f84-acf5-fefe7c2c063c",
+    "name": "QuestDB HTTP REST Chk API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HTTP REST endpoints exposed by QuestDB on the default HTTP port (9000) for SQL execution, CSV import/export, table existence checks, runtime metrics, and the InfluxDB Line Protocol HTTP ingestion endpoint. Authentication is unauthenticated by default in the open-source build; QuestDB Enterprise supports HTTP Basic Authentication and TLS.\n\nContact Support:\n Name: QuestDB Documentation",
+      "type": "text/plain"
+    }
+  }
+}

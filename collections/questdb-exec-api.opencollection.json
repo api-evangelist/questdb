@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "QuestDB HTTP REST Chk Exec API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Exec",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute a SQL statement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/exec",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "SQL statement to execute (URL-encoded)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Optional row range, for example `0,1000`."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Include total row count in the response."
+              },
+              {
+                "name": "nm",
+                "value": "",
+                "type": "query",
+                "description": "Skip metadata in the response when true."
+              },
+              {
+                "name": "timings",
+                "value": "",
+                "type": "query",
+                "description": "Include execution timings in the response."
+              }
+            ]
+          },
+          "docs": "Compiles and executes a SQL statement passed as the `query` URL parameter and returns JSON-formatted results."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
