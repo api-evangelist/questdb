@@ -25,6 +25,14 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/questdb.png
 tags:
   - Database
+  - Time Series
+  - SQL
+  - Open-Source
+  - Performance
+  - ILP
+  - PostgreSQL
+tags_raw:
+  - Database
   - Time-Series
   - SQL
   - Open Source
@@ -148,7 +156,8 @@ apis:
   description: The Write API from QuestDB — 1 operation(s) for write.
   humanURL: https://questdb.com/docs/reference/sql/overview/
   baseURL: http://<host>:9000
-  tags:
+  tags: []
+  tags_raw:
   - Write
   properties:
   - type: OpenAPI
