@@ -9,6 +9,18 @@ description: >-
   high-throughput ingestion, and the PostgreSQL wire protocol for compatibility
   with existing tooling. QuestDB is offered as open-source, Enterprise
   (self-hosted) and Bring-Your-Own-Cloud (BYOC).
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
