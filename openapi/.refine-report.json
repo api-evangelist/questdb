@@ -1,12 +1,7 @@
 {
   "provider": "questdb",
   "sources": [
-    "questdb-chk-api-openapi.yml",
-    "questdb-exec-api-openapi.yml",
-    "questdb-exp-api-openapi.yml",
-    "questdb-imp-api-openapi.yml",
-    "questdb-settings-api-openapi.yml",
-    "questdb-write-api-openapi.yml"
+    "_original/questdb-openapi.yml"
   ],
   "outputs": [
     "questdb-chk-api-openapi.yml",
@@ -19,6 +14,29 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "questdb-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "questdb-openapi.yml: tagged paths GET /exec -> Exec",
+    "questdb-openapi.yml: tagged paths POST /imp -> Imp",
+    "questdb-openapi.yml: tagged paths GET /exp -> Exp",
+    "questdb-openapi.yml: tagged paths GET /chk -> Chk",
+    "questdb-openapi.yml: tagged paths POST /write -> Write",
+    "questdb-openapi.yml: tagged paths GET /settings -> Settings",
+    "questdb-openapi.yml: declared missing tag: Chk",
+    "questdb-openapi.yml: declared missing tag: Exec",
+    "questdb-openapi.yml: declared missing tag: Exp",
+    "questdb-openapi.yml: declared missing tag: Imp",
+    "questdb-openapi.yml: declared missing tag: Settings",
+    "questdb-openapi.yml: declared missing tag: Write",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "questdb-chk-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "questdb-exec-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "questdb-exp-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "questdb-imp-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "questdb-settings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "questdb-write-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
