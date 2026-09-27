@@ -10,16 +10,22 @@ description: >-
   with existing tooling. QuestDB is offered as open-source, Enterprise
   (self-hosted) and Bring-Your-Own-Cloud (BYOC).
 deliveryModel:
-  model: saas
-  open_source: false
+  model: open-core
+  license: Apache-2.0
+  license_evidence:
+    repo: questdb/questdb
+    spdx: Apache-2.0
+    stars: 17350
+  open_source: true
   commercial: true
   callable_host: false
-  label: Hosted service · you call their endpoint
+  label: Open core · an OSS project plus a commercial hosted product
   confidence: medium
   source:
   - openapi
   - pricing
-  generated: '2026-08-28'
+  - repository-license
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -40,7 +46,7 @@ tags:
   - Database
   - Time Series
   - SQL
-  - Open-Source
+  - Open Source
   - Performance
   - ILP
   - PostgreSQL
@@ -52,6 +58,7 @@ tags_raw:
   - Performance
   - ILP
   - PostgreSQL
+  - Open-Source
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.23'
