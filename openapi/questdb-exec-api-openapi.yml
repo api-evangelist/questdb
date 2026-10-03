@@ -78,15 +78,6 @@ paths:
       - Exec
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        query:
-          type: string
-        error:
-          type: string
-        position:
-          type: integer
     ExecResponse:
       type: object
       properties:
@@ -110,6 +101,15 @@ components:
           type: integer
         timings:
           type: object
+    Error:
+      type: object
+      properties:
+        query:
+          type: string
+        error:
+          type: string
+        position:
+          type: integer
   securitySchemes:
     basicAuth:
       type: http
