@@ -1,0 +1,12 @@
+fetched: '2026-10-13'
+method: fetched
+source: https://questdb.com/docs/query/pgwire/overview/
+page: https://questdb.com/docs/query/pgwire/overview/
+file: questdb-postgres-wire-1.md
+bytes: 15260
+sha256: aaa5a51cca04e58279f79b7ad4ac6bb48d410ac302094db013cf06db24d51771
+anchor: postgresql
+shape: postgres-wire
+classification: declares-compatibility
+quote: PostgreSQL Wire Protocol | QuestDB
+note: text extracted from the provider's own page (tags stripped), saved for evidence

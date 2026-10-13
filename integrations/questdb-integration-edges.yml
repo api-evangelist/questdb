@@ -19,3 +19,22 @@ edges:
   seller_name: QuestDB
   detected_by: sweep-cloud-marketplaces.py
   detected: '2026-10-13'
+- partner_name: PostgreSQL
+  partner: postgresql
+  partner_match: shape-anchor
+  channel: provider-built
+  relationship: compatible
+  direction: provider-built
+  shape: postgres-wire
+  type: docs
+  degree: declared-subset
+  evidence: https://questdb.com/docs/query/pgwire/overview/
+  evidence_kind: own-docs
+  evidence_file: https://github.com/api-evangelist/questdb/blob/main/evidence/compatibility/questdb-postgres-wire-1.md
+  quote: QuestDB implements the PostgreSQL wire protocol (PGWire), allowing you to
+  supported_operations:
+  - COPY
+  unsupported_operations: []
+  supported_share: 0.037
+  detected_by: sweep-shape-compat.py
+  first_seen: '2026-10-13'
