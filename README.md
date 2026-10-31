@@ -1,4 +1,4 @@
-# QuestDB (questdb)
+# QuestDB
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,116 +66,130 @@
 
 QuestDB is a high-performance open-source time-series database. It exposes three programmatic surfaces — an HTTP REST API for SQL queries and CSV import/export, the InfluxDB Line Protocol (ILP) over TCP and HTTP for high-throughput ingestion, and the PostgreSQL wire protocol for compatibility with existing tooling. QuestDB is offered as open-source, Enterprise (self-hosted) and Bring-Your-Own-Cloud (BYOC).
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/questdb/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/questdb/refs/heads/main/apis.yml)
+**Areas:** Database · Time Series · SQL · Open Source · Performance · ILP · PostgreSQL
 
-## Tags
+## QuestDB on APIs.io
 
-- Database
-- Time-Series
-- SQL
-- Open Source
-- Performance
-- ILP
-- PostgreSQL
+Everything profiled for QuestDB is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/questdb/](https://apis.io/providers/questdb/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (10)
 
-- **Created:** 2026-05-08
-- **Modified:** 2026-05-08
+- [QuestDB HTTP REST API](https://apis.io/apis/questdb/rest-http/) — HTTP REST endpoints for SQL execution (/exec), CSV import (/imp), CSV export (/exp), health/metrics (/chk, /metrics) and runtime settings (/settings).…
+- [QuestDB ILP TCP Ingestion](https://apis.io/apis/questdb/ilp-tcp/) — InfluxDB Line Protocol over TCP for high-throughput, low-latency time-series ingestion. Default port 9009. Supports authentication and TLS in Enterprise.
+- [QuestDB ILP HTTP Ingestion](https://apis.io/apis/questdb/ilp-http/) — Influx Line Protocol over HTTP /write endpoint for ingestion clients that prefer HTTP (TLS, auth and ack semantics easier than the TCP variant). Served on…
+- [QuestDB PostgreSQL Wire Interface](https://apis.io/apis/questdb/postgres-wire/) — PostgreSQL wire-protocol compatibility for queries via psql, JDBC and any Postgres-compatible client. Default port 8812. Supports a subset of Postgres…
+- [QuestDB Chk API](https://apis.io/apis/questdb/questdb-chk-api/) — The Chk API from QuestDB — 1 operation(s) for chk.
+- [QuestDB Exec API](https://apis.io/apis/questdb/questdb-exec-api/) — The Exec API from QuestDB — 1 operation(s) for exec.
+- [QuestDB Exp API](https://apis.io/apis/questdb/questdb-exp-api/) — The Exp API from QuestDB — 1 operation(s) for exp.
+- [QuestDB Imp API](https://apis.io/apis/questdb/questdb-imp-api/) — The Imp API from QuestDB — 1 operation(s) for imp.
+- [QuestDB Settings API](https://apis.io/apis/questdb/questdb-settings-api/) — The Settings API from QuestDB — 1 operation(s) for settings.
+- [QuestDB Write API](https://apis.io/apis/questdb/questdb-write-api/) — The Write API from QuestDB — 1 operation(s) for write.
 
-## APIs
+### Published properties
 
-### QuestDB HTTP REST API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-HTTP REST endpoints for SQL execution (/exec), CSV import (/imp), CSV export (/exp), health/metrics (/chk, /metrics) and runtime settings (/settings). Default port 9000.
+#### Agentic access (1)
 
-- **Human URL:** [https://questdb.com/docs/reference/sql/overview/](https://questdb.com/docs/reference/sql/overview/)
-- **Base URL:** `http://<host>:9000`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Questdb Agentic Access](https://apis.io/agentic-access/questdb/questdb-agentic-access/)
 
-- REST
-- SQL
-- CSV
-- Health
-- Metrics
+#### Collections (7)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://questdb.com/docs/)
-- [API Reference](https://questdb.com/docs/reference/api/rest/)
-- [Postman Collection](collections/questdb.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/questdb.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [QuestDB HTTP REST API](https://apis.io/collections/questdb/open-questdb/)
+- [QuestDB HTTP REST Chk API](https://apis.io/collections/questdb/open-questdb-chk-api/)
+- [QuestDB HTTP REST Chk Exec API](https://apis.io/collections/questdb/open-questdb-exec-api/)
+- [QuestDB HTTP REST Chk Exp API](https://apis.io/collections/questdb/open-questdb-exp-api/)
+- [QuestDB HTTP REST Chk Imp API](https://apis.io/collections/questdb/open-questdb-imp-api/)
+- [QuestDB HTTP REST Chk Settings API](https://apis.io/collections/questdb/open-questdb-settings-api/)
+- [QuestDB HTTP REST Chk Write API](https://apis.io/collections/questdb/open-questdb-write-api/)
 
-### QuestDB ILP TCP Ingestion
+#### Security (2)
 
-InfluxDB Line Protocol over TCP for high-throughput, low-latency time-series ingestion. Default port 9009. Supports authentication and TLS in Enterprise.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://questdb.com/docs/reference/api/ilp/overview/](https://questdb.com/docs/reference/api/ilp/overview/)
-- **Base URL:** `tcp://<host>:9009`
+- [Questdb Authentication](https://apis.io/security/questdb/questdb-authentication/)
+- [Questdb Domain Security](https://apis.io/security/questdb/questdb-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- ILP
-- TCP
-- Ingestion
+Published plans, tiers and prices.
 
-#### Properties
+- [Questdb Plans Pricing](https://apis.io/plans/questdb/questdb-plans-pricing/)
 
-- [Documentation](https://questdb.com/docs/reference/api/ilp/overview/)
-- [Postman Collection](collections/questdb.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/questdb.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### QuestDB ILP HTTP Ingestion
+Published request limits.
 
-Influx Line Protocol over HTTP /write endpoint for ingestion clients that prefer HTTP (TLS, auth and ack semantics easier than the TCP variant). Served on the same port (9000) as the REST API.
+- [Questdb Rate Limits](https://apis.io/rate-limits/questdb/questdb-rate-limits/)
 
-- **Human URL:** [https://questdb.com/docs/reference/api/ilp/overview/](https://questdb.com/docs/reference/api/ilp/overview/)
-- **Base URL:** `http://<host>:9000`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- ILP
-- HTTP
-- Ingestion
+- [Questdb Finops](https://apis.io/finops/questdb/questdb-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Postman Collection](collections/questdb.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/questdb.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### QuestDB PostgreSQL Wire Interface
-
-PostgreSQL wire-protocol compatibility for queries via psql, JDBC and any Postgres-compatible client. Default port 8812. Supports a subset of Postgres features sufficient for SQL analytics on QuestDB.
-
-- **Human URL:** [https://questdb.com/docs/develop/connect/](https://questdb.com/docs/develop/connect/)
-- **Base URL:** `postgres://<host>:8812`
-
-#### Tags
-
-- PostgreSQL
-- Wire Protocol
-- JDBC
-
-#### Properties
-
-- [Postman Collection](collections/questdb.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/questdb.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/questdb)
 - [Website](https://questdb.com/)
 - [Documentation](https://questdb.com/docs/)
 - [Pricing](https://questdb.com/enterprise/)
-- [Git Hub](https://github.com/questdb/questdb)
-- [B Y O C](https://questdb.com/byoc/)
-- [Plans](plans/questdb-plans-pricing.yml)
-- [Rate Limits](rate-limits/questdb-rate-limits.yml)
-- [Fin Ops](finops/questdb-finops.yml)
-- [L L Ms Txt](https://questdb.com/llms.txt)
+- [Blog](https://questdb.com/rss.xml)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 30.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 47.6 |
+| Contract governance | 0.0 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 18.4 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/questdb/](https://apis.io/providers/questdb/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for QuestDB: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/questdb/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
